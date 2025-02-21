@@ -6,20 +6,24 @@ RUN apt-get update && \
     apt-get install -y \
     wget \
     apt-transport-https \
+    software-properties-common \
     gnupg \
     git \
     && \
     apt-get clean
 
-# Download and install the Microsoft GPG key
-RUN wget -q https://packages.microsoft.com/config/ubuntu/$(lsb_release -rs)/packages-microsoft-prod.deb -O packages-microsoft-prod.deb && \
-    dpkg -i packages-microsoft-prod.deb && \
-    rm packages-microsoft-prod.deb
+# Download the PowerShell package file
+RUN wget https://github.com/PowerShell/PowerShell/releases/download/v7.5.0/powershell_7.5.0-1.deb_amd64.deb /tmp
 
-# Install PowerShell
-RUN apt-get update && \
-    apt-get install -y powershell && \
-    apt-get clean
+###################################
+# Install the PowerShell package
+RUN dpkg -i /tmp/powershell_7.5.0-1.deb_amd64.deb
+
+# Resolve missing dependencies and finish the install (if necessary)
+RUN apt-get install -f
+
+# Delete the downloaded package file
+RUN rm /tmp/powershell_7.5.0-1.deb_amd64.deb
 
 # Clone ScanMedia script
 RUN git clone --depth 1 https://gist.github.com/129be27da7d735d7c75192ec1aa96c65.git
