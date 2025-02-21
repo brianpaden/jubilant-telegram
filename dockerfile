@@ -13,7 +13,7 @@ RUN apt-get update && \
     apt-get clean
 
 # Download the PowerShell package file
-RUN wget https://github.com/PowerShell/PowerShell/releases/download/v7.5.0/powershell_7.5.0-1.deb_amd64.deb /tmp
+RUN wget https://github.com/PowerShell/PowerShell/releases/download/v7.5.0/powershell_7.5.0-1.deb_amd64.deb -P tmp
 
 ###################################
 # Install the PowerShell package
