@@ -26,7 +26,7 @@ RUN apt-get install -f
 RUN rm /tmp/powershell_7.5.0-1.deb_amd64.deb
 
 # Clone ScanMedia script
-RUN git clone --depth 1 https://gist.github.com/129be27da7d735d7c75192ec1aa96c65.git
+RUN git clone --depth 1 https://gist.github.com/129be27da7d735d7c75192ec1aa96c65.git scanmedia
 
 # Set PowerShell as the default shell
 CMD ["pwsh"]
