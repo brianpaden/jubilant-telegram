@@ -1,0 +1,3 @@
+[submodule "scanmedia"]
+	path = scanmedia
+	url = https://gist.github.com/129be27da7d735d7c75192ec1aa96c65.git
