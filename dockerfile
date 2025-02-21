@@ -9,6 +9,7 @@ RUN apt-get update && \
     software-properties-common \
     gnupg \
     git \
+    ffmpeg \
     && \
     apt-get clean
 
