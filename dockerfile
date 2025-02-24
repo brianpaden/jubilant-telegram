@@ -5,10 +5,7 @@ FROM ubuntu:latest
 RUN apt-get update && \
     apt-get install -y \
     wget \
-    apt-transport-https \
-    software-properties-common \
     gnupg \
-    git \
     ffmpeg \
     && \
     apt-get clean
@@ -26,8 +23,8 @@ RUN apt-get install -f
 # Delete the downloaded package file
 RUN rm /tmp/powershell_7.5.0-1.deb_amd64.deb
 
-# Clone ScanMedia script
-RUN git clone --depth 1 https://gist.github.com/129be27da7d735d7c75192ec1aa96c65.git scanmedia
+# Pull in ScanMedia script
+COPY scanmedia/ /app/
 
 # Set PowerShell as the default shell
 CMD ["pwsh"]
